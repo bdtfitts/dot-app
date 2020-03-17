@@ -1,5 +1,5 @@
 /**************************
- * Copyright © 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
+ * Copyright Â© 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
  * 
  * This file is part of dot-app.
  * dot-app is free software: you can redistribute it and/or modify
@@ -164,6 +164,7 @@ public class NodePropertyMapper extends Mapper {
 		// determine if using exlabel attribute or not
 		String nodeLabel = view.getVisualProperty(NODE_LABEL);
 		// Replace quotes with escaped quotes if any
+		nodeLabel = nodeLabel.replace("\\", "\\\\");
 		nodeLabel = nodeLabel.replace("\"", "\\\"");
 		// if internal label
 		if (!isEqualToDefault(NODE_LABEL)) {

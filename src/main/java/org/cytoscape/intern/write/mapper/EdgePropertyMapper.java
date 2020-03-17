@@ -1,5 +1,5 @@
 /**************************
- * Copyright © 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
+ * Copyright Â© 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
  * 
  * This file is part of dot-app.
  * dot-app is free software: you can redistribute it and/or modify
@@ -124,6 +124,7 @@ public class EdgePropertyMapper extends Mapper {
 		// Put Simple Props Key/Values
 		if (!isEqualToDefault(EDGE_LABEL)) {
 			String edgeLabel = view.getVisualProperty(EDGE_LABEL);
+			edgeLabel = edgeLabel.replace("\\", "\\\\");
 			edgeLabel = edgeLabel.replace("\"", "\\\"");
 			simpleVisPropsToDot.add(String.format("label = \"%s\"", edgeLabel));
 		}

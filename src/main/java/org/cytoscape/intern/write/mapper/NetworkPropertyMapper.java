@@ -1,5 +1,5 @@
 /**************************
- * Copyright © 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
+ * Copyright Â© 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
  * 
  * This file is part of dot-app.
  * dot-app is free software: you can redistribute it and/or modify
@@ -153,6 +153,7 @@ public class NetworkPropertyMapper extends Mapper {
 
 		LOGGER.trace("Appending label attr to default string...");
 		String edgeLabel = vizStyle.getDefaultValue(EDGE_LABEL);
+		edgeLabel = edgeLabel.replace("\\", "\\\\");
 		edgeLabel = edgeLabel.replace("\"", "\\\"");
 		edgeDefaults.append(
 			String.format("label = \"%s\"", edgeLabel) + ","
@@ -219,6 +220,7 @@ public class NetworkPropertyMapper extends Mapper {
 		//Node SimpleVizProps
 		LOGGER.trace("Appending label attr to default string...");
 		String nodeLabel = vizStyle.getDefaultValue(NODE_LABEL);
+		nodeLabel = nodeLabel.replace("\\", "\\\\");
 		nodeLabel = nodeLabel.replace("\"", "\\\"");
 		if(!nodeLabelLoc.equals("ex")) {
 			nodeDefaults.append(
@@ -388,6 +390,7 @@ public class NetworkPropertyMapper extends Mapper {
 		if(labelLoc != null) {
 			// label attribute of graph
 			String label = view.getVisualProperty(NETWORK_TITLE);
+			label = label.replace("\\", "\\\\");
 			label = label.replace("\"", "\\\"");
 			String dotLabel = String.format("label = \"%s\"", label);
 			simpleVisPropsToDot.add(dotLabel);

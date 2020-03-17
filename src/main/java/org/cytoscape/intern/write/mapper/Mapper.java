@@ -1,5 +1,5 @@
 /**************************
- * Copyright © 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
+ * Copyright Â© 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
  * 
  * This file is part of dot-app.
  * dot-app is free software: you can redistribute it and/or modify
@@ -201,6 +201,7 @@ public abstract class Mapper {
 		StringBuilder output = new StringBuilder(id.length() + 2);
 		output.append('\"');
 		// replace any quotations from name string with escaped quotes
+		id = id.replace("\\", "\\\\");
 		id = id.replace("\"", "\\\"");
 		output.append(id);
 		output.append('\"');

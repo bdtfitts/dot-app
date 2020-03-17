@@ -1,5 +1,5 @@
 /**************************
- * Copyright � 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
+ * Copyright © 2015-2017 Braxton Fitts, Ziran Zhang, Massoud Maher
  * 
  * This file is part of dot-app.
  * dot-app is free software: you can redistribute it and/or modify
@@ -158,8 +158,10 @@ public class DotWriterTask implements CyWriter {
 		CyNetwork networkModel = networkView.getModel();
 		String nodeID = networkModel.getRow(node).get(CyNetwork.NAME,
 				String.class);
-		nodeID = String.format("\"%s§%s\"", nodeID, nodeSUID);
+		nodeID = String.format("%s\247%s", nodeID, nodeSUID);
 		nodeID = Mapper.modifyElementID(nodeID);
+		if (!nodeID.startsWith("\"") && !nodeID.endsWith("\""))
+			nodeID = String.format("\"%s\"", nodeID);
 		return nodeID;
 	}
 
